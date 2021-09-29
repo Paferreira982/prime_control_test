@@ -1,10 +1,6 @@
 import traceback
 import sys
 import requests
-from requests import get
-
-# Acessa uma API pública para obter o endereço de IP externo da máquina.
-publicIpAdress = get('https://api.ipify.org').text
 
 # Cabeçalho de acesso a API com o token.
 headers = {
@@ -16,7 +12,7 @@ headers = {
 # Função responsável pela busca do id de uma região passado por parâmetro.
 def getLocationId(region):
     try:
-        response = requests.get("https://api.clashroyale.com/v1/locations", headers=headers).json()
+        response = requests.get("https://api.clashroyale.com/v1/locations", headers=headers)
         locations = response.json()
 
         for loc in locations['items']: # Verifica o json vindo da API, item por item, afim de econtrar o id da região solicitada.
