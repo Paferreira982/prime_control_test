@@ -28,3 +28,4 @@
 <b>Observações</b>
 - O "CRA" no nome dos arquivos é uma abreviação de "Clash Royale API"
 - Arquivos com ".html", ".xml" e ".png" foram adicionados ao git ignore, afim de não poluir o repositório com os logs do Robot Framework
+- O script é preparado para buscar outros clans e também outras regiões, necessária apenas a mudança das variáveis dentro do script do Robot Framework
