@@ -5,7 +5,7 @@ import requests
 # Cabeçalho de acesso a API com o token.
 headers = {
     "Accept": "application/json", 
-    "authorization": "Bearer " + str(sys.argv[3]),
+    "authorization": "Bearer " + str(sys.argv[3]), # Captura o token enviado por argumento pelo robot framework
     "Accept": "application/json"
 }
 
@@ -74,13 +74,17 @@ try:
         sys.exit()
 
     members = getClanMembers(clanTag)
-    print("| Clã: " + clanName + " |")
+    
+    print("\n\n[INÍCIO DO RELATÓRIO]\n")
+    print("| Clã: " + clanName + " |") # Imprime no console do sistema, o nome do clã mais a lista de todos os seus membros.
     for member in members:
         print("| Nome: " + member['name'] + " | Level: " + str(member['expLevel']) + " | Troféus: " + str(member['trophies']) + " | Papel: " + member['role'] + " |")
     
+    print("\n[FIM DO RELATÓRIO]\n\n")
+    
 except:
     if str(sys.exc_info()[0]) == "<class 'IndexError'>": # Verifica se o exception é derivado de um erro dos argumentos na linha de comando.
-        print("Por favor, refaça o comando no seguinte formato:\n\t python3 {arquivo.py} '{nome_do_clan}' '{regiao}' '{token}'")
-    elif str(sys.exc_info()[0]) != "<class 'SystemExit'>": # Verifica se o exception é derivado da ordem de fechamento do programa.
-        print("[ERROR]")
+        print("Por favor, refaça o comando no seguinte formato:\n\t python {arquivo.py} '{nome_do_clan}' '{regiao}' '{token}'")
+    elif str(sys.exc_info()[0]) != "<class 'SystemExit'>": # Verifica se o exception é derivado da ordem de encerramento do script.
+        print("[ERROR] Erro na execução do script principal")
         traceback.print_exc()

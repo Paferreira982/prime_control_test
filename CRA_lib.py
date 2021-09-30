@@ -7,5 +7,5 @@ def getPublicAdress():
 
 # Função python para rodar o script principal com as config desejadas
 def runPython(clanName, region, token):
-    command = 'python rotina.py "' + clanName + '" ' + region + ' ' + token
+    command = 'python main_script.py "' + clanName + '" ' + region + ' ' + token
     os.system(command)

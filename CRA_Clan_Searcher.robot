@@ -1,6 +1,6 @@
 *** Settings ***
 Library         Selenium2Library
-Library         functions.py
+Library         CRA_lib.py
 
 *** Variables ***
 ${browser}      chrome
@@ -47,11 +47,11 @@ Fazer Login
 
     Wait Until Element Is Visible       //button/span[text()="Log In"]
 
-    Click And Input Text        //input[contains(@placeholder, "Email")]    ${email}
+    Clicar e Escrever        //input[contains(@placeholder, "Email")]    ${email}
 
     Sleep            1 seconds
 
-    Click And Input Text        //input[contains(@placeholder, "Password")]    ${password}
+    Clicar e Escrever        //input[contains(@placeholder, "Password")]    ${password}
 
     Sleep            1 seconds
 
@@ -75,17 +75,18 @@ Criar Nova Chave
 
     Wait Until Element Is Visible       //button/span[text()="Create Key"]
 
-    Click And Input Text        //input[@id="name"]    ${key_name}
+    Clicar e Escrever        //input[@id="name"]    ${key_name}
 
-    Click And Input Text        //textarea[@id="description"]    ${key_description}
+    Clicar e Escrever        //textarea[@id="description"]    ${key_description}
 
     ${ip_adress}        Get Public Adress
 
-    Click And Input Text        //input[@id="range-0"]    ${ip_adress}
+    Clicar e Escrever        //input[@id="range-0"]    ${ip_adress}
 
     Click Element                   //button/span[text()="Create Key"]
 
     Wait Until Element Is Visible            //h4[text()="${key_name}"]
+
 
 Rodar script principal
     Click Element                   //h4[text()="${key_name}"]
@@ -95,11 +96,12 @@ Rodar script principal
     Run Python        ${clan_name}      ${region}      ${token}
 
 
-Click And Input Text
+Clicar e Escrever
     [Arguments]                     ${xpath}    ${value}
     
     Wait Until Element Is Visible   xpath=${xpath}
-    Scroll Element Into View        xpath=${xpath}
+
     Click Element			        xpath=${xpath}
+
     Input Text   			        xpath=${xpath}  ${value}
 
