@@ -9,7 +9,6 @@ ${URL}      https://developer.clashroyale.com/
 ${owner_name}      Pedro Augusto
 
 ${key_name}      Prime_control
-${key_description}      Descricao simples
 
 ${email}      paferreira982@hotmail.com
 ${password}      senhaSimples
@@ -25,7 +24,7 @@ Gerar Token
 
     Acessar Tela do Token
 
-    Criar Nova Chave
+    Verificar Token
 
     Rodar script principal
 
@@ -69,6 +68,13 @@ Acessar Tela do Token
 
     Wait Until Element Is Visible       //a/span[text()="Create New Key"]
 
+Verificar Token
+    ${ip_adress}        Get Public Adress
+
+    ${status}=  Run Keyword And Return Status    Element Should Not Be Visible   //div/p[text()="${ip_adress}"]
+
+    Run Keyword If    ${status}    Criar Nova Chave
+
 
 Criar Nova Chave
     Click Element                   //a/span[text()="Create New Key"]
@@ -77,9 +83,9 @@ Criar Nova Chave
 
     Clicar e Escrever        //input[@id="name"]    ${key_name}
 
-    Clicar e Escrever        //textarea[@id="description"]    ${key_description}
-
     ${ip_adress}        Get Public Adress
+
+    Clicar e Escrever        //textarea[@id="description"]    ${ip_adress}
 
     Clicar e Escrever        //input[@id="range-0"]    ${ip_adress}
 
