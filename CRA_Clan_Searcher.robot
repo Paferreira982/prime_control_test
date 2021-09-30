@@ -73,17 +73,17 @@ Verificar Token
 
     ${status}=  Run Keyword And Return Status    Element Should Not Be Visible   //div/p[text()="${ip_adress}"]
 
-    Run Keyword If    ${status}    Criar Nova Chave
+    Run Keyword If    ${status}    Criar Nova Chave    ${ip_adress}
 
 
 Criar Nova Chave
+    [Arguments]                     ${ip_adress}
+
     Click Element                   //a/span[text()="Create New Key"]
 
     Wait Until Element Is Visible       //button/span[text()="Create Key"]
 
     Clicar e Escrever        //input[@id="name"]    ${key_name}
-
-    ${ip_adress}        Get Public Adress
 
     Clicar e Escrever        //textarea[@id="description"]    ${ip_adress}
 

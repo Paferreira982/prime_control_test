@@ -47,7 +47,7 @@ def getClanTag(clanName, regionId):
 def getClanMembers(clanTag):
     try:
         if "#" in clanTag:
-            clanTag = clanTag.replace("#","%23") # Colocando o código do caractere # na url baseado em: ASCII Encoding Reference.
+            clanTag = clanTag.replace("#","%23") # Colocando o código do caractere "#"" na url baseado em ASCII Encoding Reference.
 
         url = "https://api.clashroyale.com/v1/clans/" + clanTag + "/members"
 
@@ -74,7 +74,7 @@ try:
         sys.exit()
 
     members = getClanMembers(clanTag)
-    
+
     print("\n\n[INÍCIO DO RELATÓRIO]\n")
     print("| Clã: " + clanName + " |") # Imprime no console do sistema, o nome do clã mais a lista de todos os seus membros.
     for member in members:
@@ -83,8 +83,8 @@ try:
     print("\n[FIM DO RELATÓRIO]\n\n")
     
 except:
-    if str(sys.exc_info()[0]) == "<class 'IndexError'>": # Verifica se o exception é derivado de um erro dos argumentos na linha de comando.
+    if str(sys.exc_info()[0]) == "<class 'IndexError'>":        # Verifica se o exception é derivado de um erro dos argumentos na linha de comando.
         print("Por favor, refaça o comando no seguinte formato:\n\t python {arquivo.py} '{nome_do_clan}' '{regiao}' '{token}'")
-    elif str(sys.exc_info()[0]) != "<class 'SystemExit'>": # Verifica se o exception é derivado da ordem de encerramento do script.
+    elif str(sys.exc_info()[0]) != "<class 'SystemExit'>":      # Verifica se o exception é derivado da ordem de encerramento do script.
         print("[ERROR] Erro na execução do script principal")
         traceback.print_exc()
