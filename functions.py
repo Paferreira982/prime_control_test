@@ -5,7 +5,7 @@ from requests import get
 def getPublicAdress():
     return get('https://api.ipify.org').text
 
-# Função python para alterar o token no python principal
+# Função python para rodar o script principal com as config desejadas
 def runPython(clanName, region, token):
     command = 'python rotina.py "' + clanName + '" ' + region + ' ' + token
     os.system(command)
