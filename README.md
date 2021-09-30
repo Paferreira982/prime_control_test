@@ -10,6 +10,7 @@
 <b>Robot Framework</b>
 - pip install robotframework
 - pip install robotframework-selenium2library
+- https://sites.google.com/a/chromium.org/chromedriver/home
 
 
 <h2>Para executar</h2>
