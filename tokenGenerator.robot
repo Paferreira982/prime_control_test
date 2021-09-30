@@ -14,15 +14,19 @@ ${key_description}      Descricao simples
 ${email}      paferreira982@hotmail.com
 ${password}      senhaSimples
 
+${clan_name}      The Resistance
+${region}      Brazil
+${token}      eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjI3ODgxNzdmLWEwM2EtNDI5NS04ZWRjLWJjOTM3Mjg0NDVlYiIsImlhdCI6MTYzMjk1NzA1NSwic3ViIjoiZGV2ZWxvcGVyL2VmYTQ3NDFiLTA2MzUtMGNlNS0yNTA3LWFkYzhkZDk3YWQ4NiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTEuMjUxLjIyNi4xMDYiXSwidHlwZSI6ImNsaWVudCJ9XX0.jy7XEhA2Aj5ae1BiuG7kUlHOAlcSKYzav-8ozERIVhT8pbAenO0EC7vPwF5OMzvafzvaNshx8faZYYWGpDDksQ
+
 *** Test Cases ***
 Gerar Token
     Abrir Navegador
 
-    Fazer Login
+#    Fazer Login
 
-    Acessar Tela do Token
+#    Acessar Tela do Token
 
-    Criar Nova Chave
+#    Criar Nova Chave
 
     Fechar Navegador
 
@@ -31,6 +35,8 @@ Abrir Navegador
     Open Browser        ${URL}      ${browser}
 
     Wait Until Element Is Visible       //div/a[text()="Log In"]
+
+    Run Python        ${clan_name}      ${region}      ${token}
 
 
 Fechar Navegador

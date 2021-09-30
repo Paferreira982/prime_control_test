@@ -5,7 +5,7 @@ import requests
 # Cabeçalho de acesso a API com o token.
 headers = {
     "Accept": "application/json", 
-    "authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjJlODA2ZjUzLWVmN2MtNGI3Yi1hNmZhLTRjZDMwZTA0MzJiOSIsImlhdCI6MTYzMjkzMDg1OSwic3ViIjoiZGV2ZWxvcGVyL2VmYTQ3NDFiLTA2MzUtMGNlNS0yNTA3LWFkYzhkZDk3YWQ4NiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxOTEuMjUxLjIyNi4xMDYiXSwidHlwZSI6ImNsaWVudCJ9XX0.ydiaPSc-6R-Mw7GbxhyW0oLQI-3BfHwvVtpEJ2tgc9cM9jAQhwtfwW2VnY7Hrsh1t1Lw2fnZPLGpjHRPQnyKDQ",
+    "authorization": "Bearer " + str(sys.argv[3]),
     "Accept": "application/json"
 }
 
@@ -80,7 +80,7 @@ try:
     
 except:
     if str(sys.exc_info()[0]) == "<class 'IndexError'>": # Verifica se o exception é derivado de um erro dos argumentos na linha de comando.
-        print("Por favor, refaça o comando no seguinte formato:\n\t python3 {arquivo.py} '{nome_do_clan}' '{regiao}'")
+        print("Por favor, refaça o comando no seguinte formato:\n\t python3 {arquivo.py} '{nome_do_clan}' '{regiao}' '{token}'")
     elif str(sys.exc_info()[0]) != "<class 'SystemExit'>": # Verifica se o exception é derivado da ordem de fechamento do programa.
         print("[ERROR]")
         traceback.print_exc()
