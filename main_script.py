@@ -60,31 +60,38 @@ def getClanMembers(clanTag):
         traceback.print_exc()
 
 try:
-    clanName = str(sys.argv[1]) # Captura o primeiro argumento na linha de comando.
-    region = str(sys.argv[2]) # Captura o segundo argumento na linha de comando.
+    # Captura o primeiro e o segundo argumento na linha de comando.
+    clanName = str(sys.argv[1]) 
+    region = str(sys.argv[2])
 
     regionId = getLocationId(region)
-    if regionId is None: # Verifica se foi encontrado o id para a região informado.
+    # Verifica se foi encontrado o id para a região informado.
+    if regionId is None: 
         print("A região '" + region + "' não foi encontrada.")
         sys.exit()
 
     clanTag = getClanTag(clanName, regionId)
-    if clanTag is None: # Verifica se foi o clã com o nome informado.
+    # Verifica se foi o clã com o nome informado.
+    if clanTag is None: 
         print("O clã '" + clanName + "' não foi encontrado.")
         sys.exit()
 
     members = getClanMembers(clanTag)
 
+    # Imprime no console do sistema, o nome do clã mais a lista de todos os seus membros.
     print("\n\n[INÍCIO DO RELATÓRIO]\n")
-    print("| Clã: " + clanName + " |") # Imprime no console do sistema, o nome do clã mais a lista de todos os seus membros.
+    print("| Clã: " + clanName + " |")
     for member in members:
         print("| Nome: " + member['name'] + " | Level: " + str(member['expLevel']) + " | Troféus: " + str(member['trophies']) + " | Papel: " + member['role'] + " |")
     
     print("\n[FIM DO RELATÓRIO]\n\n")
     
 except:
-    if str(sys.exc_info()[0]) == "<class 'IndexError'>":        # Verifica se o exception é derivado de um erro dos argumentos na linha de comando.
+    # Verifica se o exception é derivado de um erro dos argumentos na linha de comando.
+    if str(sys.exc_info()[0]) == "<class 'IndexError'>":        
         print("Por favor, refaça o comando no seguinte formato:\n\t python {arquivo.py} '{nome_do_clan}' '{regiao}' '{token}'")
-    elif str(sys.exc_info()[0]) != "<class 'SystemExit'>":      # Verifica se o exception é derivado da ordem de encerramento do script.
+        
+    # Verifica se o exception é derivado da ordem de encerramento do script.
+    elif str(sys.exc_info()[0]) != "<class 'SystemExit'>":      
         print("[ERROR] Erro na execução do script principal")
         traceback.print_exc()
